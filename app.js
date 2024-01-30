@@ -23,12 +23,11 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(flash());
 
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'radon',
-    password: 'Ssai@12345',
+    password: process.env.DB_PASSWORD,
     database: 'radon',
 });
 

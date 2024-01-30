@@ -1,1 +1,4 @@
 public/
+node-modules
+.env
+
