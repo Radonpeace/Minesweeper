@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 
 exports.homePage = (req, res) => {
     const userId = req.cookies.userId;
-    console.log(userId);
+    // console.log(userId);
     res.render('index',{userId:userId}); //TODO: Remove cookie from here and pass something else for the user validation
 }
 exports.gamePage = (req, res) => {
@@ -45,7 +45,7 @@ exports.loginUtils = (req, res) => {
                 if(err) throw err;
                 if(isMatch) {
                     const token = jwt.sign({id: result[0].id}, 'your-secret-key');
-                    console.log(token);
+                    // console.log(token);
                     const cookieOptions = {
                         expires: new Date(
                             Date.now() + 100*60*60*1000 // 100 hours
@@ -54,7 +54,7 @@ exports.loginUtils = (req, res) => {
                     }
                     res.cookie('userId', result[0].id);
                     res.cookie('jwt', token, cookieOptions);
-                    console.log('Logged in successfully')
+                    // console.log('Logged in successfully')
                     res.status(200).redirect('/');
                 } else {
                     res.render('login', { usernameError: '', passwordError: 'Incorrect password' ,emailError:''});

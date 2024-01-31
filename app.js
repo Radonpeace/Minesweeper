@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const homeRoute = require('./routes/homeRoute.js');
 const userRoute = require('./routes/userRoute.js');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const app = express();
 var flash = require('connect-flash');
 const cors = require('cors');
@@ -26,9 +26,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'radon',
-    password: process.env.DB_PASSWORD,
+    user: 'root',
+    password:'ridhan',
     database: 'radon',
+    
 });
 
 db.connect((err) => {

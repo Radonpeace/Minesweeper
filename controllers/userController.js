@@ -17,6 +17,7 @@ exports.profilePage = async (req, res) => {
         });
     
         // Now you can use results here
+        // console.log(results)
         userData.gamesPlayed = results.length;
         userData.username = results[0].username;
         userData.email = results[0].email;
@@ -38,10 +39,10 @@ exports.profilePage = async (req, res) => {
 
 exports.gameOver = (req, res) => {
     const {time, gameWon} = req.body;
-    console.log(time, gameWon);
+    console.log("from server",time, gameWon);
     const db = req.db;
     const userId = req.userId;
-    console.log(userId);
+    // console.log(userId);
     const result = (gameWon === 'true' ? 'WIN' : 'LOSE')
     const sql = 'INSERT INTO gameStats (userId,timeTaken,result) VALUES(?,?,?)';
     db.query(sql, [userId, time, result], (err, result) => {
